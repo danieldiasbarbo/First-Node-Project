@@ -1,3 +1,5 @@
+const Cadastro = require("../models/register");
+
 module.exports = (app) => {
 	app.get("/register", (req, res) => {
 		res.send("Rota de cadastro, metodo GET");
@@ -5,5 +7,7 @@ module.exports = (app) => {
 
 	app.post("/register", (req, res) => {
 		const cadastro = req.body;
+
+		Cadastro.adiciona(cadastro, res);
 	});
 };

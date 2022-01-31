@@ -2,14 +2,15 @@ class Tables {
 	init(connection) {
 		this.connection = connection;
 
-		this.cadastrarCliente();
+		this.criarCadastro();
 	}
 
-	cadastrarCliente() {
+	criarCadastro() {
+		console.log("tentei criar tabela");
 		const sql =
-			"CREATE TABLE IF NOT EXISTS Usuarios (id int NOT NULL AUTO_INCREMENT, email varchar(50) NOT NULL, senha varchar(64) NOT NULL, tipo varchar(20) )";
+			"CREATE TABLE IF NOT EXISTS Usuarios (id int NOT NULL AUTO_INCREMENT, email varchar(50) NOT NULL, senha varchar(64) NOT NULL, tipo varchar(20) NOT NULL, PRIMARY KEY(id) )";
 
-		this.connection.querry(sql, (error) => {
+		this.connection.query(sql, (error) => {
 			if (error) {
 				console.log("error");
 			} else {
@@ -18,3 +19,5 @@ class Tables {
 		});
 	}
 }
+
+module.exports = new Tables();

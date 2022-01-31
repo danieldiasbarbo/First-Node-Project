@@ -2,7 +2,7 @@ const connection = require("../database/connection");
 
 class Cadastro {
 	adiciona(cadastro, res) {
-		const sql = "INSERT INTO Atendimentos SET ?";
+		const sql = "INSERT INTO Usuarios SET ?";
 
 		connection.query(sql, cadastro, (erro, resultado) => {
 			if (erro) {
@@ -16,3 +16,5 @@ class Cadastro {
 		});
 	}
 }
+
+module.exports = new Cadastro();
