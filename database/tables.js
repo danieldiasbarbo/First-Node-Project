@@ -8,7 +8,7 @@ class Tables {
 	criarCadastro() {
 		console.log("tentei criar tabela");
 		const sql =
-			"CREATE TABLE IF NOT EXISTS Usuarios (id int NOT NULL AUTO_INCREMENT, email varchar(50) NOT NULL, senha varchar(64) NOT NULL, tipo varchar(20) NOT NULL, PRIMARY KEY(id) )";
+			"CREATE TABLE IF NOT EXISTS Usuarios (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, email varchar(100) NOT NULL, senha varchar(100) NOT NULL, tipo varchar(20) NOT NULL)";
 
 		this.connection.query(sql, (error) => {
 			if (error) {

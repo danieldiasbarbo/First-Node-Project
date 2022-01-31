@@ -11,7 +11,9 @@ class Cadastro {
 
 				res.status(400).json(erro);
 			} else {
-				res.status(201).json(resultado);
+				res.status(201).send({
+					mensagem: "Usuário criado com sucesso",
+				});
 			}
 		});
 	}
