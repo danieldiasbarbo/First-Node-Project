@@ -1,4 +1,7 @@
+require("dotenv").config();
+
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 class User {
 	getToken(connection, usuario, res) {
@@ -20,7 +23,11 @@ class User {
 						return res.status(500).send({ error: "error" });
 					}
 					if (resultBcrypt) {
-						return res.status(200).send({ mensagem: "usuario logado" });
+						const accessToken = jwt.sign(
+							usuario.email,
+							process.env.ACCESS_TOKEN_SECRET
+						);
+						return res.status(200).json({ acessToken: accessToken });
 					}
 
 					return res.status(401).send({ mensagem: "Unauthorized" });
@@ -28,6 +35,8 @@ class User {
 			);
 		});
 	}
+
+	authenticateToken(usuario, token) {}
 
 	isLogedIn(connection, token) {
 		// Verificará se o token gerado é válido
